@@ -36,7 +36,7 @@ const { Category, Product } = require('../../models');
   router.post('/', async (req, res) => {
   try {
     const categoryData = await Category.create({
-      name: req.body.name,
+      category_name: req.body.category_name,
     });
     res.status(200).json(categoryData);
   } catch (err) {
@@ -50,7 +50,7 @@ router.put('/:id', async (req, res) => {
     // ??TOTO: should i chg this to Category.update(req.body,        & delete lines 52-54?
     const categoryData = await Category.update(
     {
-      name: req.body.name
+      category_name: req.body.category_name
     },
     {
       where: {

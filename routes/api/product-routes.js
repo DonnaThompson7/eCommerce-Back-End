@@ -34,6 +34,7 @@ router.get('/:id', async (req, res) => {
 // CREATE product
 router.post('/', (req, res) => {
   Product.create(req.body)
+        // ??TODO: does this need specific columns set here?
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tagIds.length) {
