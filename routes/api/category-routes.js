@@ -47,7 +47,7 @@ const { Category, Product } = require('../../models');
 // UPDATE a category by its `id` value
 router.put('/:id', async (req, res) => {
   try {
-    // ??TOTO: should i chg this to Category.update(req.body, &delete lines 52-54
+    // ??TOTO: should i chg this to Category.update(req.body,        & delete lines 52-54?
     const categoryData = await Category.update(
     {
       name: req.body.name
