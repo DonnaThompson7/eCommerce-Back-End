@@ -9,6 +9,10 @@
     "watch": "nodemon server.js",
     "seed": "node seeds/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:DonnaThompson7/eCommerce-Back-End.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
