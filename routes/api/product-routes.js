@@ -33,15 +33,19 @@ router.get('/:id', async (req, res) => {
 
 // CREATE product
 router.post('/', (req, res) => {
-  Product.create(req.body)
-        // ??TODO: does this need specific columns set here?
+  Product.create({
+      product_name: req.body.product_name,
+      price: req.body.price,
+      stock: req.body.stock,
+      category_id: req.body.category_id,
+    })
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tagIds.length) {
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
           return {
             product_id: product.id,
-            tag_id,
+            tag_id: tag_id,
           };
         });
         return ProductTag.bulkCreate(productTagIdArr);
@@ -59,7 +63,14 @@ router.post('/', (req, res) => {
 // UPDATE product
 router.put('/:id', (req, res) => {
   // update product data
-  Product.update(req.body, {
+  Product.update(
+  {
+    product_name: req.body.product_name,
+    price: req.body.price,
+    stock: req.body.stock,
+    category_id: req.body.category_id,
+  }, 
+  {
     where: {
       id: req.params.id,
     },
